@@ -4,7 +4,7 @@ require_relative 'chunker.rb'
 
 class ChunkerTest < Minitest::Test
   attr_reader :chunker
-  
+
   def setup
     @string = "Rich thinks a single enumerable can solve this."
     @chunker = Chunker.new
@@ -22,7 +22,7 @@ class ChunkerTest < Minitest::Test
 
   def test_it_can_handle_leftovers
     result = chunker.chunk("houses")
-    assert_equal ["house","s"]
+    assert_equal ["house","s"], result
   end
 
   def test_it_can_split_a_large_string_into_chunks_of_five
@@ -32,12 +32,11 @@ class ChunkerTest < Minitest::Test
 
   def test_it_can_chunk_into_threes
     result = chunker.chunk("houses", 3)
-    assert_equal ["hou","ses"]
+    assert_equal ["hou","ses"], result
   end
 
   def test_it_can_chunk__into_threes_with_leftovers
     result = chunker.chunk("houseses", 3)
-    assert_equal ["hou","ses","es"]
+    assert_equal ["hou","ses","es"], result
   end
-
 end
